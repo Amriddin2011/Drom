@@ -1,0 +1,186 @@
+// COLORS
+$color-text-primary: #000;
+$color-text-primary-inverted: #fff;
+$color-text-secondary: rgba(0, 0, 0, .4);
+$color-gray-icon: #bdc2c7;
+$color-background-primary: #f5f5f5;
+$color-background-primary-hover: #ededed;
+$color-background-primary-alpha: rgba(0, 0, 0, .05);
+$color-background-secondary: #e2e7ee;
+$color-background-page: #fff;
+$color-background-page-inverted: #000;
+$color-header-background: #000;
+$color-background-error: #ffebed;
+$color-background-warning: #fff9d6;
+$color-background-message: #f0f9ff;
+$color-background-success: #eafddd;
+$color-background-electro: rgba(102, 227, 255, .2);
+$color-popping-error-notification: #ffebed;
+$color-popping-warning-notification: #fff9d6;
+$color-popping-message-notification: #f0f9ff;
+$color-popping-success-notification: #eafddd;
+$color-link: #1a76cb;
+$color-visited-link: #b706b7;
+$color-visited-text: #8a8c93;
+$color-drom-brand: #db001a;
+$color-link-hover-border: rgba(219, 0, 26, .2);
+$color-primary-alpha5: rgba(0, 0, 0, .05);
+$color-primary-alpha8: rgba(0, 0, 0, .08);
+$color-primary-alpha10: rgba(0, 0, 0, .1);
+$color-primary-alpha20: rgba(0, 0, 0, .2);
+$color-primary-alpha30: rgba(0, 0, 0, .3);
+$color-primary-alpha50: rgba(0, 0, 0, .5);
+$color-white: #fff;
+$color-checkbox-light-bg: #fff;
+$color-checkbox-dark-bg: #f5f5f5;
+$color-switch-bg: rgba(0, 0, 0, .05);
+$color-dark-active-bg: #000;
+$color-dark-active-bg-contrast: #000;
+$color-dark-hover-bg: rgba(0, 0, 0, .1);
+$color-radiopicker-hover-bg: rgba(0, 0, 0, .03);
+$color-checked-mark-on-dark-bg: #89d322;
+$color-control-border: rgba(17, 40, 75, .1);
+$color-control-hover-border: #c8ccd0;
+$color-popup-like-bg: #fff;
+$color-element-on-page-bg: #f5f5f5;
+$color-element-on-form-bg: #fff;
+$color-element-with-shadow-bg: #fff;
+$color-invalid-element-on-page-bg: #ffebed;
+$color-invalid-element-on-form-bg: #ffebed;
+$color-dropdown-on-page-bg: #fff;
+$color-dropdown-on-form-bg: #fff;
+$color-mobile-bull-card-bg: #fff;
+$color-mobile-bull-card-list-bg: #f5f5f5;
+$color-green: #84b63e;
+$color-orange: #f9cb24;
+$color-yellow: #f9f4ae;
+$color-outline: #1a76cb;
+$color-bull-package-bg: #fff6eb;
+$color-bull-package-hover-bg: #ffefdb;
+$color-positive-selection: rgba(132, 182, 62, .2);
+$color-negative-selection: rgba(219, 0, 26, .1);
+$color-neutral-selection: rgba(0, 0, 0, .1);
+$color-up-color: #84b63e;
+$color-up-hover-color: #74a037;
+$color-up-bg-color: #eafddd;
+$color-up-bg-hover-color: #e4fcd4;
+$color-sticky-color: #1a76cb;
+$color-sticky-hover-color: #1766b0;
+$color-sticky-bg-color: #f0f9ff;
+$color-sticky-bg-hover-color: #e6f5ff;
+$color-premium-color: #ffa200;
+$color-premium-hover-color: #e08e00;
+$color-premium-bg-color: #fff9d6;
+$color-premium-bg-hover-color: #fff7cc;
+$color-superpromo-color: #990012;
+$color-superpromo-bg-color: #dd0816;
+$color-superpromo-bg-gradient-start: #000;
+$color-superpromo-bg-gradient-end: #dd0816;
+$color-superpromo-bg-gradient-hover-end: #c00713;
+$color-superpromo-button-bg-gradient-start: #ff5f42;
+$color-superpromo-button-bg-gradient-hover-start: #ff4524;
+$color-superpromo-button-bg-gradient-hover-end: #bd0016;
+$color-superpromo-button-color: #fff0f1;
+$color-superpromo-button-color-hover: #ffd1d6;
+$color-button-text-disabled: #fff;
+$color-black-button-bg: #000;
+$color-black-button-hover: #333;
+$color-black-button-disabled: #d9d9d9;
+$color-black-button-text-disabled: #fff;
+$color-red-button-bg: #db001a;
+$color-red-button-hover: #bd0016;
+$color-red-button-disabled: #ffb3bb;
+$color-blue-button-bg: #1a76cb;
+$color-blue-button-hover: #1766b0;
+$color-blue-button-disabled: #bbdaf6;
+$color-green-button-bg: #84b63e;
+$color-green-button-hover: #74a037;
+$color-green-button-disabled: #dcebc6;
+$color-light-blue-button-bg: #d6ecff;
+$color-light-blue-button-hover: #b8deff;
+$color-light-blue-button-disabled: #e8f3fc;
+$color-button-blue-text: #1a76cb;
+$color-button-blue-text-disabled: #8ec1f0;
+$color-gray-button-bg: #f5f5f5;
+$color-gray-button-hover: #e6e6e6;
+$color-gray-button-disabled: #f7f7f7;
+$color-purple-button-bg: #a589ae;
+$color-purple-button-hover: #9776a2;
+$color-purple-button-disabled: #dcd1e0;
+$color-alpha-button-hover: rgba(0, 0, 0, .1);
+
+// ========================================================================================
+// SIZES
+
+// $sizes: (
+//     $sm: 320px,
+//     $md: 768px,
+//     $lg: 1024px,
+//     $xl: 1440px
+// );
+// ---- ---- ----
+// TO USE THESE:
+// font-size: map-get($sizes, $sm);
+// ---- ---- ---- ---- ---- ---- ----
+
+$phone: 320px;
+$tablet: 768px;
+$desktop: 1024px;
+$large: 1440px;
+
+// ========================================================================================
+// FLEX
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 10px) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+// @include flex();   ->  default values
+// @include flex(direction, justify, align, 20px);   ->   specific values
+// ========================================================================================
+// GRID
+@mixin grid($gap: 10px, $columns: false, $rows: false, $size: 1fr, $align: center, $justify: center) {
+    display: grid;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+
+    @if $columns {
+        grid-template-columns: repeat($columns, $size);
+    }
+
+    @if $rows {
+        grid-template-rows: repeat($rows, $size);
+    }
+}
+
+// @include grid();   ->  default values
+// @include grid(columns:3, $size:100px);   ->   specific values
+// ========================================================================================
+// ROUNDED CORNERS
+@mixin rounded($width, $height, $radius: 50%) {
+    width: $width;
+    height: $height;
+    border-radius: $radius;
+}
+
+// @include rounded(100px, 100px);   ->  default values
+// @include rounded(50px, 50px, 10px);   ->   specific values
+// ========================================================================================
+// WAVE EFFECT
+@mixin wave($color1, $color2, $deg: false) {
+    @if ($deg) {
+        background: linear-gradient($deg, $color1, $color2, $color1);
+    }
+
+    @else {
+        background: linear-gradient(to bottom, $color2, $color1, $color2);
+    }
+
+    clip-path: polygon(100% 0, 100% 94%, 88% 98%, 73% 100%, 52% 97%, 37% 91%, 24% 86%, 11% 83%, 0 84%, 0 1%);
+}
+
+// ========================================================================================
