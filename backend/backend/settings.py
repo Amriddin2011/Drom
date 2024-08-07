@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from datetime import timedelta
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'main',
+    
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -123,6 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -136,13 +145,12 @@ REST_FRAMEWORK = {
     ],
 }
 
-from datetime import timedelta
 REFRESH_TOKEN_LIFETIME_SIX_WEEKS = 42
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=REFRESH_TOKEN_LIFETIME_SIX_WEEKS),
-    'ROTATE_REFRESH_TOKENS': True, # If True, refresh tokens will be rotated
+    'ROTATE_REFRESH_TOKENS': True,  # If True, refresh tokens will be rotated
     # That means that after each request we will get a new refresh token
     # RU: Если True, токены обновления будут поворачиваться
     # Это означает, что после каждого запроса мы получим новый токен обновления

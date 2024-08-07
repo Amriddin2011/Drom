@@ -7,7 +7,7 @@ function AllComponents(props) {
     return (
         <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Navigation />} >
-                <Route index element={"дром"} />
+                {/* <Route index element={"дром"} /> */}
                 <Route path="*" element={<NoPage />} />
             </Route>
         </Routes>

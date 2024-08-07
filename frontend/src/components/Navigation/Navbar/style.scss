@@ -1,0 +1,93 @@
+@use './../../../assets/styles/resets';
+@import './../../../assets/styles/settings';
+
+header{
+    background-color: rgba(0,0,0);
+    max-width: 2200px;
+    @include flex($justify: space-between, $gap: 5px);
+    padding: 5px 10px;
+
+    .logo{
+        img{
+            margin: 10px;
+        }
+        a{
+            margin: 10px;
+            
+        }
+    }
+    .location{
+        margin: 17px;
+        a{
+            width: 50px;
+            padding: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-align: center;
+            background-color: none;
+            color: $color-gray-icon;
+            text-decoration: none;
+            border-radius: 5px;
+
+        }
+        a:hover{
+            color: rgba(255,255,255);
+        }
+    }
+    .link{
+        margin: 17px;
+        a{
+            width: 50px;
+            padding: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-align: center;
+            background-color: none;
+            color: $color-gray-icon;
+            text-decoration: none;
+            border-radius: 5px;
+
+        }
+        a:hover{
+            background-color: rgba(205,205,205,0.1);
+            color: rgba(255,255,255);
+        }
+    }
+    .button{
+        margin: 17px;
+        a{
+            width: 50px;
+            padding: 15px;
+            padding-left: 30px;
+            padding-right: 30px;
+            text-align: center;
+            background-color: $color-drom-brand;
+            color: $color-white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover{
+            background-color: rgba(255,40,50,0.7);
+            color: rgba(255,255,255,0.9);
+        }
+    }
+    .registr{
+        margin: 17px;
+        a{
+            width: 50px;
+            padding: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-align: center;
+            background-color: none;
+            color: $color-gray-icon;
+            text-decoration: none;
+            border-radius: 5px;
+
+        }
+        a:hover{
+            background-color: rgba(205,205,205,0.1);
+            color: rgba(255,255,255);
+        }
+    }
+}
