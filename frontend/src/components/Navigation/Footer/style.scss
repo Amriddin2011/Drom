@@ -1,0 +1,42 @@
+@use './../../../assets/styles/resets';
+@import './../../../assets/styles/settings';
+
+footer{
+    width: 100%;
+    padding: 15px;
+    margin-top: 45px;
+    border-top: 1px $color-background-secondary solid;
+
+    .applications{
+        @include flex($justify: center, $gap: 5px);
+
+        div{
+            margin: 12px;
+            &:hover{
+                scale: 1.6;
+            }
+        }
+    }
+
+    .another-pages{
+        @include flex($justify: center, $gap: 5px);
+        margin: 30px;
+        a{
+            margin: 12px;
+            text-decoration: none;
+            color: $color-link;
+            font-size: 14px;
+            &:hover{
+                color: $color-red-button-hover;
+            }
+        }
+    }
+
+    p{
+        text-align: center;
+        color: $color-text-secondary;
+        margin-top: 42px;
+        margin-bottom: 25px;
+        font-size: 15px;
+    }
+}

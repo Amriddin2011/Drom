@@ -1,0 +1,57 @@
+@use './../../assets/styles/resets';
+@import './../../assets/styles/settings';
+
+.product{
+    width: 310px;
+    background-color: $color-yellow;
+    margin-bottom: 17px;
+    padding: 20px;
+    padding-bottom: 35px;
+    border-radius: 5px;
+
+    .top{
+        .price{
+            position: absolute;
+            background-color: $color-red-button-hover;
+            color: white;
+            margin: 5px;
+            margin-top: 170px;
+            padding: 3px;
+            border-radius: 5px;
+
+            span{
+                padding-right: 2px;
+                font-size: 13px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+        }
+        img{
+            border-radius: 5px;
+            justify-content: center;                                                                                                                                                                                                                                                                 
+        }
+    }
+    .bottom{
+        margin-left: 12px;
+
+        .name{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+            color: $color-text-primary;
+            text-decoration: none;
+            
+            &:hover{
+                color: $color-red-button-hover;
+            }
+        }
+        .city{
+            font-size: 13px;
+            color: $color-text-secondary;
+            margin-left: 2px;
+        }
+        .describe{
+            font-size: 15;
+            color: rgba(0,0,0,0.8);
+            margin-left: 4px;
+        }
+    }
+}
