@@ -1,7 +1,10 @@
 import './style.scss';
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { BASE_URL, context } from "../../../store"
 
 function SingIn(props) {
+    const state = useContext(context)
+
     const [form, setForm] = useState({
         username: "",
         password: ""
@@ -14,7 +17,6 @@ function SingIn(props) {
 
     async function submit(e) {
         e.preventDefault()
-        const BASE_URL = "http://127.0.0.1:8000"
 
         const options = {
             method: "POST",
@@ -28,6 +30,18 @@ function SingIn(props) {
         console.log(data)
 
         localStorage.setItem("auth-token", JSON.stringify(data))
+
+        let user_response = fetch(BASE_URL + "auth/users/me/", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${data.access}`
+            }
+        })
+        let user_data = await user_response.json()
+        state.dispatch({type:"SET_CURRENT_USER", payload: user_data})
+        console.log(user_data)
+
         alert("Logged in successfully!")
         e.target.reset()
     }
