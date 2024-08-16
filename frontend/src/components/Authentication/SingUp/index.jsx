@@ -1,5 +1,7 @@
 import './style.scss';
 import { useEffect, useState } from "react"
+import { BASE_URL } from "../../../store"
+
 
 function SingUp() {
     const [form, setForm] = useState({
@@ -17,7 +19,6 @@ function SingUp() {
 
     async function submit(e) {
         e.preventDefault()
-        const BASE_URL = "http://127.0.0.1:8000"
 
         const options = {
             method: "POST",

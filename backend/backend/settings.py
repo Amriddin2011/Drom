@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from datetime import timedelta
 import os
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+177=np*n((vrxv575y3868t)cu*x_*gecxr=3(81ub3dmc!f8'
+SECRET_KEY = 'django-insecure-l*65ma#=6o4@yhyogz-px)!bu72oc+p(!ev!qci#a_br_8$w*k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,14 +43,13 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'djoser',
-    'main',
     
+    'main',
     'django_cleanup.apps.CleanupConfig',
 ]
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -139,6 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # TokenAuthentication is replaced with JWTAuthentication
@@ -146,8 +149,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-REFRESH_TOKEN_LIFETIME_SIX_WEEKS = 42
-
+REFRESH_TOKEN_LIFETIME_SIX_WEEKS = 42  # days
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=REFRESH_TOKEN_LIFETIME_SIX_WEEKS),
@@ -158,10 +160,13 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     # In the client we need to send the token in the header like this:
     # Authorization: bearer <token>
+
+    'BLACKLIST_AFTER_ROTATION': True,
 }
 
 DJOSER = {
-    "USER_ID_FIELD": "username", # We use username for login
+    "USER_ID_FIELD": "username",  # We use username for login
     "LOGIN_FIELD": "email", # We can use email or username for login
     "USER_CREATE_PASSWORD_RETYPE": True, # We can use this to make user retype the password
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
 }

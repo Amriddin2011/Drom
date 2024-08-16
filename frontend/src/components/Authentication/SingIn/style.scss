@@ -169,6 +169,12 @@
             }
         }
 
+        .remind-password{
+            a{
+                color: $color-sticky-color;
+                text-decoration: underline;
+            }
+        }
     }
 
     .muted-text {

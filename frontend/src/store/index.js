@@ -3,12 +3,11 @@ const BASE_URL = "http://127.0.0.1:8000"
 
 
 const context = createContext()
+
 const initialState = {
     currentUser: {},
     counter: 0,
-}
-
-
+} 
 function globalReducer(state, action) {
     switch (action.type) {
         case "SET_CURRENT_USER":
