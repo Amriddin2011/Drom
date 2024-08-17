@@ -1,2 +1,20 @@
 @use './assets/styles/resets';
 @import './assets/styles/settings';
+
+*{
+    transition: 0.5;
+}
+
+::-webkit-scrollbar{
+    background-color: black;
+    border-radius: 3px 0 0 3px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: $color-drom-brand;
+    border-radius: 5px;
+    &:active{
+        background-color: $color-red-button-hover;
+        border: 2px solid rgb(136, 16, 16);
+    }
+}

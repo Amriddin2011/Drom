@@ -7,6 +7,10 @@ header{
     @include flex($justify: space-between, $gap: 5px);
     padding: 5px 10px;
 
+    h3{
+        color: snow;
+    }
+
     .logo{
         img{
             margin: 10px;
@@ -55,6 +59,8 @@ header{
     }
     .button{
         margin: 17px;
+        margin-right: 0 auto;
+
         a{
             width: 50px;
             padding: 15px;
@@ -71,8 +77,54 @@ header{
             color: rgba(255,255,255,0.9);
         }
     }
+    .dropbtn {
+        display: inline-block;
+        position: relative;
+        background-color: black;
+        border: none;
+
+        .registr{
+            a{
+                color: snow;
+                font-size: large;
+
+            }
+        }
+        
+        .drp-content {
+            display: none;
+            position: absolute;
+            max-width: 320px;
+            background-color: rgba(0,0,0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            padding-top: 20px;
+
+            a {
+                color: snow;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                background-color: rgba(0,0,0, 0.4);
+                padding: 15px;
+                padding-left: 65px;
+                padding-right: 65px;
+                margin: 8px;
+                border-radius: 5px;
+                &:hover{
+                    background-color: rgba(0,0,0, 0.2);
+                }
+            }
+        }
+
+        &:hover .drp-content {
+            display: block;
+        }
+    }
     .registr{
         margin: 17px;
+
+
         a{
             width: 50px;
             padding: 15px;
@@ -89,5 +141,20 @@ header{
             background-color: rgba(205,205,205,0.1);
             color: rgba(255,255,255);
         }
+
+        // .username{
+        //     transition: 0.5s;
+        //     color: snow;
+        //     font-size: large;
+
+        //     &:hover{
+        //         transition: 0.5s;
+        //         background-color: $color-drom-brand;
+        //     }
+        //     &:focus{
+        //         background-color: $color-red-button-hover;
+        //         color: rgba(205,205,205,0.9);
+        //     }
+        // }
     }
 }

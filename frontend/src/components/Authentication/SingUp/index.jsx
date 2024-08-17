@@ -1,6 +1,7 @@
 import './style.scss';
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../../../store"
+import { toast } from 'react-toastify'
 
 
 function SingUp() {
@@ -33,7 +34,8 @@ function SingUp() {
             let data = await response.json()
             console.log(data)
 
-            alert("Account created successfully! SingIn now!")
+            toast.success("Account created successfully! SingIn now!", { position: "top-center", theme:"dark"})
+
             e.target.reset()
         }else{
             let errors = await response.json();

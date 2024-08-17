@@ -1,6 +1,8 @@
 import './style.scss';
 import { useEffect, useState, useContext } from "react"
 import { BASE_URL, context } from "../../../store"
+import { toast } from 'react-toastify'
+
 
 function SingIn(props) {
     const state = useContext(context)
@@ -31,7 +33,7 @@ function SingIn(props) {
 
         localStorage.setItem("auth-token", JSON.stringify(data))
 
-        let user_response = fetch(BASE_URL + "auth/users/me/", {
+        let user_response = await fetch(BASE_URL + "/auth/users/me/", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +44,7 @@ function SingIn(props) {
         state.dispatch({type:"SET_CURRENT_USER", payload: user_data})
         console.log(user_data)
 
-        alert("Logged in successfully!")
+        toast.success("Logged in successfully!", { position: "top-center", theme:"dark"})
         e.target.reset()
     }
 
