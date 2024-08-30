@@ -1,0 +1,95 @@
+@use './../../assets/styles/resets';
+@import './../../assets/styles/settings';
+
+.main {
+    h1 {
+        &:hover {
+            color: $color-red-button-hover;
+        }
+    }
+
+    .sellForm {
+        border-radius: 15px;
+        width: 800px;
+        margin: 0px auto;
+        @include flex(column, center);
+        padding: 20px;
+        background-color: rgba(100, 100, 100, 0.1);
+        align-items: center;
+
+        .inputs {
+            display: grid;
+            grid-template-columns: 3fr 3fr 3fr;
+
+            div {
+                margin: 7px;
+
+                input {
+                    border: none;
+                    padding: 12px;
+                    width: 220px;
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        .images {
+            position: relative;
+            background-color: #f3f3f3;
+            width: 680px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            border-radius: 5px;
+            padding: 27px;
+            height: 18px;
+
+            input[type=file] {
+                cursor: pointer;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                opacity: 0;
+            }
+        }
+
+        .show-image {
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px gray,
+                    -1px -1px 10px gray;
+                margin-right: 10px;
+                position: relative;
+                transition: 0.2s;
+
+                &:hover {
+                    box-shadow: 1px 1px 10px red,
+                        -1px -1px 10px red;
+                    cursor: pointer;
+                    filter: brightness(0.8);
+                }
+            }
+
+        }
+
+        .show {
+            button {
+                background-color: black;
+                width: 680px;
+                border-radius: 5px;
+                padding: 27px;
+                height: 18px;
+                border: none;
+                color: snow;
+                text-align: center;
+                font-size: large;
+                @include flex($justify: center, $gap: 0px);
+            }
+        }
+    }
+}

@@ -1,0 +1,139 @@
+import './style.scss'
+import { useState } from 'react'
+import AddImagePng from "../../assets/imgs/addImage.png"
+import { toast } from 'react-toastify'
+import axios from "axios"
+import { BASE_URL } from "../../store"
+
+
+function SellCar() {
+    const [form, setForm] = useState({
+        images: [],
+        brand: "",
+        model: "",
+        generation: "",
+        price: "",
+        year: "",
+        drive: "",
+    })
+
+    async function submit(e) {
+        e.preventDefault()
+
+        // Create form data
+        const formData = new FormData()
+        // GET ONLY FIRST image as image for now
+        formData.append("images", form.images[0][0])
+        formData.append("brand", form.brand)
+        formData.append("model", form.model)
+        formData.append("generation", form.generation)
+        formData.append("price", form.price)
+        formData.append("year", form.year)
+        formData.append("drive", form.drive)
+        // -------------------------
+        // TODO: Add multiple images
+        form.images.forEach((image, index) => {
+            formData.append(`images[${index}]`, image)
+        })
+        // -------------------------
+        const URL = BASE_URL + "/api/products/"
+        try {
+            const response = await axios.post(URL, formData)
+            // TODO:  'Authorization': `Bearer ${token}`
+            console.log(response.data);
+        } catch (error) {
+            // console.error('Error uploading images:', error);
+        }
+        e.target.reset()
+        toast.success("You are selling your car!", { position: "top-center", theme:"dark"})
+    }
+
+    function setFormValue(e) {
+        const { name, value } = e.target;
+        if (name === "images") {
+            const file = e.target.files[0]
+            const imageUrl = URL.createObjectURL(file)
+
+            // set form images and image URLs
+            setForm({ ...form, images: [...form.images, [file, imageUrl]] })
+        } else {
+            setForm({ ...form, [name]: value })
+        }
+    }
+
+    function removeImage(e) {
+        let imageUrl = e.target.src
+        setForm({ ...form, images: form.images.filter(img => img[1] !== imageUrl) })
+
+        try {
+            let imageEl = document.querySelector(`${e.target.getAttribute("data-del")}`)
+            imageEl.remove()
+        } catch (error) {
+            console.warn("Image has been deleted")
+        }
+    }
+
+    return (
+        <div className="main">
+            <h1>Sell a car!</h1>
+            {/* {form.brand}
+            <br />
+            {form.model}
+            <br />
+            {form.generation}
+            <br />
+            {form.price}
+            <br />
+            {form.year}
+            <br />
+            {form.drive} */}
+            <form onSubmit={submit} className='sellForm'>
+                <div className="inputs">
+                    <div className="brand">
+                        <input type="text" name='brand' placeholder='Brand' onChange={setFormValue} />
+                    </div>
+                    <div className="model">
+                        <input type="text" name='model' placeholder='Model' onChange={setFormValue} />
+                    </div>
+                    <div className="generation">
+                        <input type="number" name='generation' placeholder='Generation' onChange={setFormValue} />
+                    </div>
+                    <div className="price">
+                        <input type="number" name='price' placeholder='Price' onChange={setFormValue} />
+                    </div>
+                    <div className="year">
+                        <input type="number" name='year' placeholder='Year' onChange={setFormValue} />
+                    </div>
+                    <div className="wheelDrive">
+                        <input type="text" name='drive' placeholder='Wheel Drive' onChange={setFormValue} />
+                    </div>
+                </div>
+                <div className="images">
+                    <input type="file" name='images' placeholder='Images' onChange={setFormValue} />
+                    <img src={AddImagePng} alt="addImages" />
+                    <small>Upload or drag here</small>
+
+                    <div className="images-container"></div>
+
+                </div>
+                <div className="show-image">
+                    {
+                        form.images.map((image, index) =>
+                            <img
+                                key={index}
+                                src={image[1]}
+                                alt="product"
+                                onClick={removeImage}
+                                data-del={image[1].slice(image[1].length - 10)} // last 10 characters of the image URL
+                            />
+                        )
+                    }
+                </div>
+                <div className="show">
+                    <button type='submit'>Show</button>
+                </div>
+            </form>
+        </div>
+    );
+}
+export default SellCar;

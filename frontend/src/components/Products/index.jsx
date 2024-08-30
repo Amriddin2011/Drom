@@ -1,6 +1,6 @@
+import './style.scss'
 import m5cs from './../../assets/imgs/m5cs.jpg';
 import img from './../../assets/imgs/default.jpg';
-import './style.scss';
 
 function Products(props) {
     return (

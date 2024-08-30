@@ -30,7 +30,7 @@ function Navbar() {
                 </svg>
                 <Link to={"#"}> Samarqand</Link>
             </div>
-            <div className="link"><Link to={"/cars"}>Cars</Link></div>
+            <div className="link"><Link to={"/sell-car"}>Cars</Link></div>
             <div className="link"><Link to={"#"}>Special equipment</Link></div>
             <div className="link"><Link to={"#"}>Spare parts</Link></div>
             <div className="link"><Link to={"#"}>Rewiews</Link></div>

@@ -11,15 +11,6 @@ function LandingPage(props) {
                 <Products />
                 <Products />
                 <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
             </div>
         </main>
     );

@@ -56,7 +56,7 @@ function SingIn(props) {
                     <p className='p-muted-text'>Sing in or Sing up</p>
                 </div>
             </div>
-            <form onSubmit={submit}>
+            <form className='SingInForm' onSubmit={submit}>
                 <div className="links">
                     <a className='SingIn' href="/SingIn">Sing In</a>
                     <a className='SingUp' href="/SingUp">Sing Up</a>

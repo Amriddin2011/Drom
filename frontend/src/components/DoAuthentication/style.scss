@@ -1,0 +1,19 @@
+@use './../../assets/styles/resets';
+@import './../../assets/styles/settings';
+
+.p{
+     height: 810px;
+     
+     p{
+          text-align: center;
+          position: center;
+         margin: 10px auto;
+         margin-top: 20px;
+         margin-left: 60px; 
+         font-size: large;
+        a{
+             color: #6108b0;
+             text-decoration: underline;
+        } 
+     }
+}

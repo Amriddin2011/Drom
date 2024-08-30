@@ -25,9 +25,7 @@ function ProfilePage() {
                         </div>
                     </div>      
                 :
-                    <div>
-                        <p>You didn't  do <Link to={"/SingIn"}>authentication</Link>!</p>
-                    </div>
+                    <p>dfwdw</p>
             }
             
         </div>
