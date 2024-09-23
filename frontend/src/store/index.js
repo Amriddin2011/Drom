@@ -1,19 +1,31 @@
+import { refreshToken, fetchLogout } from "./apiCalls"
+
 import { createContext } from "react";
 const BASE_URL = "http://127.0.0.1:8000"
+const USD_RATE = 1
 
 
 const context = createContext()
-
 const initialState = {
+    products: [],
     currentUser: {},
-    counter: 0,
-} 
+    selectedProducts: [],
+    cartProductsCount: 0,
+}
+
+
 function globalReducer(state, action) {
     switch (action.type) {
         case "SET_CURRENT_USER":
-            return {...state, currentUser: action.payload}
+            return { ...state, currentUser: action.payload }
+        case "SET_PRODUCTS":
+            return { ...state, products: action.payload }
         case "LOGOUT":
-            return {...state, currentUser: {}}
+            return { ...state, currentUser: {} }
+        case "SET_SELECTED_PRODUCTS":
+            return { ...state, selectedProducts: action.payload }
+        case "SET_SELECTED_ITEMS_COUNT":
+            return { ...state, cartProductsCount: action.payload }
         default:
             throw new Error("Unexpected action")
     }
@@ -24,4 +36,6 @@ export {
     initialState,
     globalReducer,
     BASE_URL,
+    USD_RATE,
+    refreshToken, fetchLogout
 };

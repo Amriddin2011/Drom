@@ -1,8 +1,35 @@
 @use './../../assets/styles/resets';
 @import './../../assets/styles/settings';
 
-div{
-    .image{
-        position: center;
+.car-details {
+    height: 600px;
+    
+    .left {
+        margin: 50px;
+        float: left;
+        
+        .image {
+            width: 500px;
+            height: 500px;
+            border-radius: 5px;
+        }
+    }
+    
+    .right {
+        float: right;
+        margin: 50px;
+        margin-right: 500px;
+        background-color: #eaeaea;
+        padding: 20px;
+        border-radius: 5px;
+
+        div{
+            b{
+                
+            }
+            span{
+                // float: right;
+            }
+        }
     }
 }

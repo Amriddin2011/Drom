@@ -18,10 +18,10 @@ function SellCar() {
     })
 
     const optionsBrand = [
-        {label: "Brand", value:0},
-        {label: "Bmw", value:1},
-        {label: "Mercedes", value:2},
-        {label: "Toyota", value:3}
+        { label: "Brand", value: 0 },
+        { label: "Bmw", value: 1 },
+        { label: "Mercedes", value: 2 },
+        { label: "Toyota", value: 3 }
     ]
 
     async function submit(e) {
@@ -37,6 +37,10 @@ function SellCar() {
         formData.append("price", form.price)
         formData.append("year", form.year)
         formData.append("drive", form.drive)
+        formData.append("description", form.description)
+        formData.append("color", form.color)
+        formData.append("horsePower", form.horsePower)
+        formData.append("run", form.run)
         // -------------------------
         // TODO: Add multiple images
         // form.images.forEach((image, index) => {
@@ -69,9 +73,9 @@ function SellCar() {
         }
     }
 
-    function removeImage(e=null,all=false) {
-        if (all==true) {
-            for (let i=0; i<form.images.length; i++) {
+    function removeImage(e = null, all = false) {
+        if (all == true) {
+            for (let i = 0; i < form.images.length; i++) {
                 let imageUrl = form.images[i][1]
                 let imgTag = document.querySelector(`img[src="${imageUrl}"]`)
                 imgTag.remove()
@@ -85,7 +89,8 @@ function SellCar() {
                 let imageEl = document.querySelector(`${e.target.getAttribute("data-del")}`)
                 imageEl.remove()
             } catch (error) {
-                console.warn("Image has been deleted")
+                console.log("Image has been deleted")
+                toast.warn("Image has been deleted", { position: "top-center", theme: "dark" })
             }
         }
     }
@@ -104,27 +109,46 @@ function SellCar() {
                         </select> */}
                     </div>
                     <div className="model">
-                        <input type="text" name='model' placeholder='Model' onChange={setFormValue} />
+                        <input type="text" name='model' placeholder='Model' onChange={setFormValue} required />
                     </div>
                     <div className="generation">
-                        <input type="number" name='generation' placeholder='Generation' onChange={setFormValue} />
+                        <input type="number" name='generation' placeholder='Generation' onChange={setFormValue} required />
                     </div>
                     <div className="price">
-                        <input type="number" name='price' placeholder='Price' onChange={setFormValue} />
+                        <input type="number" name='price' placeholder='Price' onChange={setFormValue} required />
                     </div>
                     <div className="year">
-                        <input type="number" name='year' placeholder='Year' onChange={setFormValue} />
+                        <input type="number" name='year' placeholder='Year' onChange={setFormValue} required />
                     </div>
                     <div className="wheelDrive">
-                        <input type="text" name='drive' placeholder='Wheel Drive' onChange={setFormValue} />
+                        <input type="text" name='drive' placeholder='Wheel Drive' onChange={setFormValue} required />
+                    </div>
+
+                    <div className="color">
+                        <input type="text" name='color' placeholder='Color' onChange={setFormValue} required />
+                    </div>
+                    <div className="horsePower">
+                        <input type="text" name="horsePower" placeholder='Horse Power' onChange={setFormValue} required />
+                    </div>
+                    <div className="run">
+                        <input type="text" name="run" placeholder='Run km' onChange={setFormValue} required />
                     </div>
                 </div>
+                <div className="description">
+                    <textarea id="description"
+                        placeholder="Description"
+                        rows={8}
+                        name="description"
+                        onChange={setFormValue}
+                        value={form.description}
+                    />
+                </div>
                 <div className="images">
-                    <input type="file" name='images' placeholder='Images' onChange={setFormValue} />
+                    <input type="file" name='images' placeholder='Images' onChange={setFormValue} required />
                     <img src={AddImagePng} alt="addImages" />
                     <small>Upload or drag here</small>
                 </div>
-                <div className="show-image">
+                <div className="show-image" >
                     {
                         form.images.map((image, index) =>
                             <img

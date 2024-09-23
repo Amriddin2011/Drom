@@ -1,18 +1,18 @@
+import { zeroes } from "../../helpers"
+
 function Product(props) {
     return (
         <div>
             <div className="product" key={props.key ? props.key : 1}>
                 <div className="top">
                     <p className="price">
-                        {
-                            props.price ? props.price + "$" : "Salesman hasn't written a price yet!"
-                        }
+                        { zeroes(props.price ? props.price : "Salesman hasn't written price yet!")}$
                     </p>
                     <img src={props.image} alt="It is image of the car!" width={'272'} height={'204'} />
                 </div>
                 <div className="bottom">
                     {
-                        props.brand ? props.brand : "Salesman haven't written brand and model yet!"
+                        props.brand ? props.brand : "Salesman hasn't written brand and model yet!"
                     }
                     <span> </span>
                     {
@@ -21,7 +21,7 @@ function Product(props) {
                     <p className="city">City not found!</p>
                     <p className="describe">
                         {
-                            props.description ? props.description.slice(0, 30) : "Salesman hasn't written a description yet".slice(0, 30) + "..."
+                            props.description ? props.description.slice(0, 30)+"..." : "Salesman hasn't written a description yet".slice(0, 30) + "..."
                         }
                         <br />
                         {

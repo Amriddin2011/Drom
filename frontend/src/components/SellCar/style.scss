@@ -31,11 +31,27 @@
                     border-radius: 4px;
                 }
             }
+
+        }
+
+        .description {
+            textarea {
+                width: 680px;
+                height: 10vh;
+                border: none;
+                padding: 12px;
+                border-radius: 4px;
+                text-align: center;
+
+                &::placeholder{
+                    font-family: sans-serif;
+                }
+            }
         }
 
         .images {
             position: relative;
-            background-color: #f3f3f3;
+            background-color: #f6f6f6;
             width: 680px;
             display: flex;
             flex-direction: column;
