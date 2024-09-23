@@ -17,13 +17,20 @@ function SellCar() {
         drive: "",
     })
 
+    const optionsBrand = [
+        {label: "Brand", value:0},
+        {label: "Bmw", value:1},
+        {label: "Mercedes", value:2},
+        {label: "Toyota", value:3}
+    ]
+
     async function submit(e) {
         e.preventDefault()
 
         // Create form data
         const formData = new FormData()
         // GET ONLY FIRST image as image for now
-        formData.append("images", form.images[0][0])
+        formData.append("image", form.images[0][0])
         formData.append("brand", form.brand)
         formData.append("model", form.model)
         formData.append("generation", form.generation)
@@ -32,9 +39,9 @@ function SellCar() {
         formData.append("drive", form.drive)
         // -------------------------
         // TODO: Add multiple images
-        form.images.forEach((image, index) => {
-            formData.append(`images[${index}]`, image)
-        })
+        // form.images.forEach((image, index) => {
+        //     formData.append(`images[${index}]`, image)
+        // })
         // -------------------------
         const URL = BASE_URL + "/api/products/"
         try {
@@ -42,10 +49,11 @@ function SellCar() {
             // TODO:  'Authorization': `Bearer ${token}`
             console.log(response.data);
         } catch (error) {
-            // console.error('Error uploading images:', error);
+            console.error('Error uploading images:', error);
         }
         e.target.reset()
-        toast.success("You are selling your car!", { position: "top-center", theme:"dark"})
+        toast.success("You are selling your car!", { position: "top-center", theme: "dark" })
+        removeImage(null, true)
     }
 
     function setFormValue(e) {
@@ -61,36 +69,39 @@ function SellCar() {
         }
     }
 
-    function removeImage(e) {
-        let imageUrl = e.target.src
-        setForm({ ...form, images: form.images.filter(img => img[1] !== imageUrl) })
+    function removeImage(e=null,all=false) {
+        if (all==true) {
+            for (let i=0; i<form.images.length; i++) {
+                let imageUrl = form.images[i][1]
+                let imgTag = document.querySelector(`img[src="${imageUrl}"]`)
+                imgTag.remove()
+            }
+            form.images = []
+        } else {
+            let imageUrl = e.target.src
+            setForm({ ...form, images: form.images.filter(img => img[1] !== imageUrl) })
 
-        try {
-            let imageEl = document.querySelector(`${e.target.getAttribute("data-del")}`)
-            imageEl.remove()
-        } catch (error) {
-            console.warn("Image has been deleted")
+            try {
+                let imageEl = document.querySelector(`${e.target.getAttribute("data-del")}`)
+                imageEl.remove()
+            } catch (error) {
+                console.warn("Image has been deleted")
+            }
         }
     }
 
     return (
         <div className="main">
             <h1>Sell a car!</h1>
-            {/* {form.brand}
-            <br />
-            {form.model}
-            <br />
-            {form.generation}
-            <br />
-            {form.price}
-            <br />
-            {form.year}
-            <br />
-            {form.drive} */}
             <form onSubmit={submit} className='sellForm'>
                 <div className="inputs">
                     <div className="brand">
                         <input type="text" name='brand' placeholder='Brand' onChange={setFormValue} />
+                        {/* <select name='brand' className="form-select">
+                        {optionsBrand.map((option, index) => (
+                            <option key={index} value={option.value}>{option.label}</option>
+                        ))}
+                        </select> */}
                     </div>
                     <div className="model">
                         <input type="text" name='model' placeholder='Model' onChange={setFormValue} />
@@ -112,9 +123,6 @@ function SellCar() {
                     <input type="file" name='images' placeholder='Images' onChange={setFormValue} />
                     <img src={AddImagePng} alt="addImages" />
                     <small>Upload or drag here</small>
-
-                    <div className="images-container"></div>
-
                 </div>
                 <div className="show-image">
                     {

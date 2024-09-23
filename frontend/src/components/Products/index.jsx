@@ -1,44 +1,59 @@
 import './style.scss'
 import m5cs from './../../assets/imgs/m5cs.jpg';
 import img from './../../assets/imgs/default.jpg';
+import Product from './Product'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { BASE_URL } from '../../store'
+import { Link } from 'react-router-dom'
 
 function Products(props) {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        fetchProducts()
+    }, [])
+
+    async function fetchProducts() {
+        const URL = BASE_URL + "/api/products"
+        try {
+            let response = await axios.get(URL)
+            console.log(response.data)
+            if (response.status == 200) {
+                setProducts(response.data)
+                console.log(products)
+            } else {
+                console.log(products)
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <>
-            <div className="product">
-                <div className="top">
-                    <p className="price">
-                        <span>1</span>
-                        <span>800</span>
-                        <span>000</span>
-                        <span>000</span>
-                        <span>UZS</span>
-                    </p>
-                    <img src={m5cs} alt="It is a car!" width={'272'} height={'204'} />
-                </div>
-                <div className="bottom">
-                    <a className="name" href='#'>Bmw m5 cs</a>
-                    <p className="city">Samarkand</p>
-                    <p className="describe">Motor 4.4, 635 hp, color is green.</p>
-                </div>
-            </div>
-            <div className="product">
-                <div className="top">
-                    <p className="price">
-                        <span>1</span>
-                        <span>200</span>
-                        <span>000</span>
-                        <span>000</span>
-                        <span>UZS</span>
-                    </p>
-                    <img src={img} alt="It is a car!" width={'272'} height={'204'} />
-                </div>
-                <div className="bottom">
-                    <a className="name" href='#'>Toyota Camry</a>
-                    <p className="city">Xuchand</p>
-                    <p className="describe">Motor 3.5, 301 hp, color is black.</p>
-                </div>
-            </div>
+            {
+                products.map((product, index) => {
+                    return (
+                        <Link key={index} to={"/car/" + product.id}>
+                            <div key={index}>
+                                <Product
+                                    price={product.price}
+                                    image={product.image}
+                                    brand={product.brand}
+                                    model={product.model}
+                                    description={product.description}
+                                    year={product.year}
+                                    generation={product.generation}
+                                    drive={product.drive}
+                                />
+                            </div>
+                        </Link>
+                    )
+                })
+            }
+
+            <Product image={m5cs} />
         </>
     );
 }

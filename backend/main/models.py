@@ -11,18 +11,15 @@ class Products(models.Model):
     brand = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
     generation = models.CharField(max_length=3)
-    price = models.FloatField(max_length=20)
-    year = models.FloatField(max_length=4)
+    price = models.IntegerField()
+    year = models.IntegerField()
     drive = models.CharField(max_length=3)
+    description = models.TextField()
+    color = models.TextField()
+    horsePower = models.TextField()
+    run = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # images: [],
-    # brand: "",
-    # model: "",
-    # generation: "",
-    # price: "",
-    # year: "",
-    # drive: "",
 
     def __str__(self):
         return self.brand

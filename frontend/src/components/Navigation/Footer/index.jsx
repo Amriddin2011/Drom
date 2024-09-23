@@ -1,4 +1,5 @@
 import './style.scss';
+import { Link } from 'react-router-dom'
 
 function Footer() {
     return ( 
@@ -21,10 +22,10 @@ function Footer() {
                 </div>
             </div>
             <div className="another-pages">
-                <a href="#">About the project</a>
-                <a href="#">Help</a>
-                <a href="#">Rules</a>
-                <a href="#">For Media</a>
+                <Link to={"#"}>About the project</Link>
+                <Link to={"#"}>Help</Link>
+                <Link to={"#"}>Rules</Link>
+                <Link to={"#"}>For Media</Link>
             </div>
             <p>© 2024 Drom</p>
         </footer>

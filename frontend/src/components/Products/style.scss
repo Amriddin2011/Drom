@@ -1,8 +1,13 @@
 @use './../../assets/styles/resets';
 @import './../../assets/styles/settings';
 
+a{
+    color: black;
+}
+
 .product{
     width: 310px;
+    height: 340px;
     background-color: $color-yellow;
     margin-bottom: 17px;
     padding: 20px;

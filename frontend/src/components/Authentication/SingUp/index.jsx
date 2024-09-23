@@ -49,14 +49,14 @@ function SingUp() {
         <div className="main">
             <div className="linkAndText">
                 <div className="div">
-                    <a href="/">Drom ›</a>
+                    <Link to={"/"}>Drom ›</Link>
                     <p className='p-muted-text'>Sing in or Sing up</p>
                 </div>
             </div>
             <form className='SingUpForm' onSubmit={submit}>
                 <div className="links">
-                    <a className='SingIn' href="/SingIn">Sing In</a>
-                    <a className='SingUp' href="/SingUp">Sing Up</a>
+                    <Link className='SingIn' to={"/SingIn"}>Sing In</Link>
+                    <Link className='SingUp' to={"/SingUp"}>Sing Up</Link>
                 </div>
                 <div className="inputs">
                     <ul className="errors">

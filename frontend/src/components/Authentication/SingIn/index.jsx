@@ -2,6 +2,7 @@ import './style.scss';
 import { useEffect, useState, useContext } from "react"
 import { BASE_URL, context } from "../../../store"
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 
 function SingIn(props) {
@@ -52,14 +53,14 @@ function SingIn(props) {
         <div className="main">
             <div className="linkAndText">
                 <div className="div">
-                    <a href="/">Drom ›</a>
+                    <Link to={"/"}>Drom ›</Link>
                     <p className='p-muted-text'>Sing in or Sing up</p>
                 </div>
             </div>
             <form className='SingInForm' onSubmit={submit}>
                 <div className="links">
-                    <a className='SingIn' href="/SingIn">Sing In</a>
-                    <a className='SingUp' href="/SingUp">Sing Up</a>
+                    <Link className='SingIn' to={"/SingIn"}>Sing In</Link>
+                    <Link className='SingUp' to={"/SingUp"}>Sing Up</Link>
                 </div>
                 <div className="inputs">
                     <div className="username">
@@ -81,7 +82,7 @@ function SingIn(props) {
                     </div>
                 </div>
                 <div className="remind-password">
-                    <a href="#">remind password</a>
+                    <Link to={"#"}>remind password</Link>
                 </div>
             </form>
             <div className="muted-text">

@@ -7,10 +7,6 @@ function LandingPage(props) {
             <h1>Cars sale in Uzbekistan!</h1>
             <div className="products">
                 <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
             </div>
         </main>
     );

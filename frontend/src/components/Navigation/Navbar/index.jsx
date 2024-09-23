@@ -45,7 +45,7 @@ function Navbar() {
 
 
                                 <div className="drp-content">
-                                    <a href='#' onClick={logout}>Logout</a>
+                                    <Link to={'#'} onClick={logout}>Logout</Link>
                                 </div>
                             </button>
                     </div>
