@@ -2,7 +2,7 @@ import './style.scss';
 import Drom from './../../../assets/imgs/logo.jpg';
 import Logo from './../../../assets/imgs/logo2.jpg'
 import { Link } from 'react-router-dom'
-import {context} from '../../../store'
+import { context } from '../../../store'
 import { useContext } from 'react';
 import { fetchLogout } from '../../../store/apiCalls'
 
@@ -38,19 +38,22 @@ function Navbar() {
             <div className="link"><Link to={"#"}>More⏑</Link></div>
             <div className="button"><Link to={"#"}>+Sell</Link></div>
             {
-                state.currentUser?.username ?
+                state.currentUser?.user ?
                     <div className="dropdown">
-                            <button className="dropbtn nav-box">
-                                <div className="registr"><Link to={"/profile-page"} className='username'>{state.currentUser.username}</Link></div>
+                        <button className="dropbtn nav-box">
+                            {/* <div className="registr"><Link to={"/profile-page"} className='username'>{state.currentUser.username}</Link></div> */}
+                            <img src={state.currentUser.image} width={55}/>
 
 
-                                <div className="drp-content">
-                                    <Link to={'#'} onClick={logout}>Logout</Link>
-                                </div>
-                            </button>
+
+                            <div className="drp-content">
+                                <Link to={'#'} onClick={logout}>Logout</Link>
+                            </div>
+                        </button>
                     </div>
                     :
                     <div className="registr"><Link to={"/SingIn"}>Sing in & Sing up</Link></div>
+                
             }
         </header>
     );

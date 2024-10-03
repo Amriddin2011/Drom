@@ -1,4 +1,18 @@
 import { BASE_URL, initialState } from "."
+import { getTokensFromLocalStorage } from "../helpers"
+import axios from 'axios'
+
+async function accessTokenExpired() {
+    try {
+        const { accessToken, _ } = getTokensFromLocalStorage()
+        const URL = BASE_URL + "/api/token/verify/"
+        let result = await axios.post(URL, {token: accessToken})
+        return result.status !== 200
+    }
+    catch (error) {
+        refreshToken()
+    }
+}
 
 function refreshToken() {
     const TOKEN = localStorage.getItem("auth-token") || "{}"
@@ -45,7 +59,33 @@ async function fetchLogout() {
     }
 }
 
+async function getMe() {
+    if (await accessTokenExpired()) return initialState.currentUser
+
+    const { accessToken, _ } = getTokensFromLocalStorage()
+    try {
+        let user_response = await fetch(BASE_URL + "/api/profiles/", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            }
+        })
+        if (user_response.ok) {
+            return await user_response.json()
+        } else {
+            return initialState.currentUser
+        }
+    } catch (error) {
+        console.error("--- Error when getting myself ---")
+        console.error(error)
+        console.error("-----------------------------------")
+        return initialState.currentUser
+    }
+}
+
 export {
     refreshToken,
-    fetchLogout
+    fetchLogout,
+    getMe
 }

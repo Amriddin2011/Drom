@@ -1,6 +1,6 @@
 import './style.scss';
 import { useEffect, useState, useContext } from "react"
-import { BASE_URL, context } from "../../../store"
+import { BASE_URL, context, getMe } from "../../../store"
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
@@ -41,8 +41,8 @@ function SingIn(props) {
                 "Authorization": `Bearer ${data.access}`
             }
         })
-        let user_data = await user_response.json()
-        state.dispatch({type:"SET_CURRENT_USER", payload: user_data})
+        
+        let user_data = await getMe()
         console.log(user_data)
 
         toast.success("Logged in successfully!", { position: "top-center", theme:"dark"})

@@ -1,8 +1,7 @@
-from django.apps import AppConfig
+from django.apps import apps
+from django.contrib import admin
 
-class UsersConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'users'
+app = apps.get_app_config('users')
 
-    def ready(self):
-        import users.signals
+for model_name, model in app.models.items():
+    admin.site.register(model)
